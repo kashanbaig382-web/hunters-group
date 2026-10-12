@@ -189,7 +189,11 @@ export default function Home() {
             <a href="#contact" onClick={closeMenu}>Contact</a>
           </nav>
 
-          <a href="#contact" className="button button-primary nav-cta">
+          <a
+            href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+            target="_blank"
+            rel="noreferrer"
+            className="button button-primary nav-cta">
             Get a Quote <ArrowUpRight size={16} />
           </a>
         </div>
