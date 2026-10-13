@@ -183,7 +183,9 @@ export default function Home() {
                 </div>
               )}
             </div>
-
+          
+            <a href="#team">Our Team</a>
+            <a href="#results">Results</a>
             <a href="#why-us" onClick={closeMenu}>Why Hunters</a>
             <a href="#process" onClick={closeMenu}>Our Process</a>
             <a href="#contact" onClick={closeMenu}>Contact</a>
@@ -198,51 +200,60 @@ export default function Home() {
           </a>
         </div>
       </header>
+      <section className="hero hero-premium" id="home">
+        <div className="hero-premium-image" aria-hidden="true" />
 
-      <section className="hero" id="home">
-        <div className="hero-image" aria-hidden="true" />
-        <div className="hero-wash" aria-hidden="true" />
+        <div className="hero-premium-content container">
+          <div className="hero-premium-copy">
+            <div className="eyebrow">
+              <span className="eyebrow-line" />
+              GLOBAL TRADE · E-COMMERCE · LOGISTICS
+            </div>
 
-        <div className="container hero-content">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            GLOBAL TRADE · E-COMMERCE · LOGISTICS
-          </div>
+            <h1>
+              Your Business.
+              <br />
+              <span>Beyond Borders.</span>
+            </h1>
 
-          <h1>
-            Your Business.
-            <br />
-            <span>Beyond Borders.</span>
-          </h1>
+            <p className="hero-description">
+              From e-commerce and international sourcing to import, export
+              and warehousing — we help connect your business to new
+              opportunities across global markets.
+            </p>
 
-          <p className="hero-description">
-            From e-commerce and international sourcing to import, export and
-            warehousing — we help connect your business to new possibilities.
-          </p>
+            <div className="hero-actions">
+              <a href="#services" className="button button-primary">
+                Explore Our Services <ArrowRight size={17} />
+              </a>
 
-          <div className="hero-actions">
-            <a href="#services" className="button button-primary">
-              Explore Our Services <ArrowRight size={17} />
+              <a
+                href="https://wa.me/923250930059"
+                target="_blank"
+                rel="noreferrer"
+                className="button button-secondary"
+              >
+                <MessageCircle size={17} /> Let&apos;s Talk
+                <ArrowUpRight size={16} />
+              </a>
+            </div>
+
+            <div className="hero-premium-points">
+              <span><ShieldCheck size={19} /> Business-focused solutions</span>
+              <span><Globe2 size={19} /> Global trade support</span>
+              <span><Handshake size={19} /> Multiple services, one partner</span>
+            </div>
+
+            <a href="#services" className="hero-scroll-link">
+              <span>↓</span> SCROLL TO DISCOVER
             </a>
-            <a href="#contact" className="button button-secondary">
-              Let&apos;s Talk <MoveUpRight size={16} />
-            </a>
-          </div>
-
-          <div className="hero-proof">
-            <span><Check size={15} /> Business-focused solutions</span>
-            <span><Check size={15} /> Multiple services, one partner</span>
           </div>
         </div>
 
-        <div className="hero-caption">
+        <div className="hero-premium-caption">
           <span className="caption-dot" />
           CONNECTING BUSINESS TO OPPORTUNITY
         </div>
-
-        <a href="#services" className="scroll-cue" aria-label="Scroll to services">
-          <ArrowDownRight size={19} />
-        </a>
       </section>
 
       <section className="trust-strip" aria-label="Our approach">
@@ -279,25 +290,54 @@ export default function Home() {
               </a>
             </div>
           </div>
-
           <div className="services-grid">
             {services.map((service) => {
               const Icon = service.icon;
+
+              const serviceImages: Record<string, string> = {
+                ecommerce:
+                  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85",
+                import:
+                  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=85",
+                export:
+                  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=900&q=85",
+                warehousing:
+                  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85",
+                logistics:
+                  "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=85",
+                "buyer-sourcing":
+                  "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=85",
+              };
+
               return (
                 <article className="service-card" key={service.number}>
-                  <div className="service-topline">
-                    <span className="service-number">{service.number}</span>
-                    <span className="service-icon"><Icon size={22} /></span>
+                  <div className="service-card-image">
+                    <img
+                      src={serviceImages[service.slug]}
+                      alt={service.title}
+                      loading="lazy"
+                    />
                   </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <a
-                    href={`/services/${service.slug}`}
-                    className="service-link"
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    Learn more <ArrowUpRight size={17} />
-                  </a>
+
+                  <div className="service-card-content">
+                    <div className="service-topline">
+                      <span className="service-number">{service.number}</span>
+                      <span className="service-icon">
+                        <Icon size={22} />
+                      </span>
+                    </div>
+
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+
+                    <a
+                      href={`/services/${service.slug}`}
+                      className="service-link"
+                      aria-label={`Learn more about ${service.title}`}
+                    >
+                      Learn More <ArrowUpRight size={17} />
+                    </a>
+                  </div>
                 </article>
               );
             })}
@@ -353,6 +393,165 @@ export default function Home() {
               <span className="note-line" />
               <span>Built around your business needs.</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Premium Team Section */}
+      <section className="team-section section" id="team">
+        <div className="container">
+          <div className="section-heading team-heading">
+            <div>
+              <span className="eyebrow">OUR TEAM</span>
+              <h2>
+                Meet the People Behind <span>Hunters Group</span>
+              </h2>
+              <p>
+                A dedicated team working together to support our business
+                operations and global trade goals.
+              </p>
+            </div>
+          </div>
+
+          <div className="team-grid">
+            {[
+              {
+                name: "Huzaifa",
+                role: "Founder",
+                image: "/team-huzaifa.jpg",
+                description: "Building business opportunities and partnerships.",
+              },
+              {
+                name: "Zunaira",
+                role: "Managing Director",
+                image: "/team-zunaira.jpg",
+                description: "Supporting business operations and coordination.",
+              },
+              {
+                name: "Dr Salam Ahmad Raza",
+                role: "CEO",
+                image: "/team-salam.jpg",
+                description: "Leading the company’s vision and business direction.",
+              },
+              {
+                name: "M. Matiullah",
+                role: "Co-Founder",
+                image: "/team-matiullah.jpg",
+                description: "Contributing to business development and growth.",
+              },
+              {
+                name: "Kashan Ali",
+                role: "Head of IT",
+                image: "/team-kashan.jpg",
+                description: "Managing technology and digital development.",
+              },
+            ].map((member) => (
+              <article
+                className={`team-card ${member.role === "CEO" ? "team-card-ceo" : ""
+                  }`}
+                key={member.name}
+              >
+                <div className="team-photo">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="team-info">
+                  <span className="team-role">{member.role}</span>
+                  <h3>{member.name}</h3>
+                  <p>{member.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Registrations & Affiliations */}
+      <section className="registrations-section section" id="registrations">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">OUR OFFICIAL REGISTRATIONS</span>
+              <h2>
+                Registrations & <span>Affiliations.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="registrations-grid">
+            {[
+              { name: "State Administration for Market Regulation", short: "SAMR" },
+              { name: "Administration for Market Regulation", short: "AMR" },
+              { name: "Ministry of Commerce", short: "MOFCOM" },
+              { name: "Lahore Chamber of Commerce & Industry", short: "LCCI" },
+              { name: "Federal Board of Revenue", short: "FBR" },
+              { name: "Pakistan Single Window", short: "PSW" },
+              { name: "Trade Development Authority of Pakistan", short: "TDAP" },
+            ].map((org) => (
+              <div className="registration-card" key={org.short}>
+                <div className="registration-logo">
+                  <img
+                    src={`/${org.short.toLowerCase()}.png`}
+                    alt={`${org.name} logo`}
+                    loading="lazy"
+                  />
+                </div>
+                <h3>{org.name}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Results & Achievements */}
+      <section className="results-section section" id="results">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">OUR WORK IN ACTION</span>
+              <h2>
+                Results & <span>Achievements.</span>
+              </h2>
+              <p>
+                A look at our work, progress, and business achievements.
+              </p>
+            </div>
+          </div>
+
+          <div className="results-grid">
+            {[
+              {
+                image: "/results/result-1.png",
+                title: "Business Results",
+              },
+              {
+                image: "/results/result-2.png",
+                title: "Project Performance",
+              },
+              {
+                image: "/results/result-3.png",
+                title: "Growth & Progress",
+              },
+              {
+                image: "/results/result-4.png",
+                title: "Our Achievements",
+              },
+            ].map((result) => (
+              <article className="result-card" key={result.image}>
+                <div className="result-image">
+                  <img
+                    src={result.image}
+                    alt={result.title}
+                    loading="lazy"
+                  />
+                </div>
+                <h3>{result.title}</h3>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -459,8 +658,10 @@ export default function Home() {
         </div>
       </section>
 
+
       <footer className="site-footer">
         <div className="container footer-main">
+          {/* Brand */}
           <div className="footer-brand-column">
             <a href="#home" className="brand footer-brand">
               <img
@@ -469,15 +670,15 @@ export default function Home() {
                 className="brand-image"
               />
               <span className="brand-copy">
-                <strong>HUNTER$</strong>
+                <strong>HUNTERS</strong>
                 <span>GROUP</span>
               </span>
             </a>
-            <p>
-              Connecting businesses with practical trade, sourcing and
-              logistics solutions.
-            </p>
 
+            <p className="footer-description">
+              Connecting businesses with practical trade, sourcing and
+              logistics solutions across global markets.
+            </p>
 
             <div className="social-links">
               <a
@@ -485,57 +686,70 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Instagram
+                Instagram <ArrowUpRight size={15} />
               </a>
               <a
                 href="https://www.facebook.com/Huntersgroup71/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Facebook
+                Facebook <ArrowUpRight size={15} />
               </a>
             </div>
 
             <a className="footer-phone" href="tel:+923250930059">
               +92 325 0930059
             </a>
-
-
           </div>
 
+          {/* Explore */}
           <div className="footer-column">
             <h4>Explore</h4>
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
             <a href="#why-us">Why Hunters</a>
             <a href="#process">Our Process</a>
+            <a href="#team">Our Team</a>
           </div>
 
+          {/* Services */}
           <div className="footer-column">
             <h4>Our Services</h4>
             <a href="/services/ecommerce">E-Commerce</a>
-            <a href="/services/import">Import & Export</a>
-            <a href="/service/warehousing">Warehousing</a>
-            <a href="/services/buyer-sourcing">Buyer & Logistics</a>
+            <a href="/services/import">Import Services</a>
+            <a href="/services/export">Export Services</a>
+            <a href="/services/warehousing">Warehousing</a>
+            <a href="/services/logistics">Logistics</a>
+            <a href="/services/buyer-sourcing">Buyer Sourcing</a>
           </div>
 
+          {/* Contact */}
           <div className="footer-column footer-contact">
-            <h4>Get in Touch</h4>
-            <p>Have a requirement? We&apos;d be glad to hear from you.</p>
+            <span className="footer-eyebrow">LET&apos;S CONNECT</span>
+            <h4>Have a project in mind?</h4>
+            <p>
+              Tell us about your business requirements. Let&apos;s explore
+              how Hunters Group can help.
+            </p>
+
             <a
-              href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+              href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services"
               target="_blank"
               rel="noreferrer"
               className="footer-contact-link"
             >
-              Chat on WhatsApp <ArrowUpRight size={15} />
+              Chat on WhatsApp <ArrowUpRight size={17} />
             </a>
           </div>
         </div>
 
         <div className="container footer-bottom">
-          <span>© 2026 Hunters Group. All rights reserved.</span>
-          <a href="#home">Back to top ↑</a>
+          <span>
+            © {new Date().getFullYear()} Hunters Group. All rights reserved.
+          </span>
+          <div className="footer-bottom-links">
+            <a href="#home">Back to top ↑</a>
+          </div>
         </div>
       </footer>
     </main>
