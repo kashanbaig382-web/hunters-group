@@ -200,6 +200,7 @@ export default function Home() {
           </a>
         </div>
       </header>
+      {/* Homepage update */}
       <section className="hero hero-premium" id="home">
         <div className="hero-premium-image" aria-hidden="true" />
 
