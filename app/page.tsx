@@ -746,7 +746,7 @@ export default function Home() {
 
         <div className="container footer-bottom">
           <span>
-            © {new Date().getFullYear()} Hunters Group. All rights reserved.
+            © 2026 Hunters Group. All rights reserved.
           </span>
           <div className="footer-bottom-links">
             <a href="#home">Back to top ↑</a>
