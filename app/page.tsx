@@ -425,13 +425,7 @@ export default function Home() {
           <div className="team-grid">
             {
               [
-                {
-                  name: "Dr Salam Ahmad Raza",
-                  role: "CEO",
-                  image: "/team-salam.jpg",
-                  description:
-                    "Leads Hunters Group’s vision, strategy, and business direction. Focused on sustainable growth, strong partnerships, and long-term opportunities.",
-                },
+                
                 {
                   name: "M huzaifa attari",
                   role: "Founder",
@@ -445,6 +439,13 @@ export default function Home() {
                   image: "/team-matiullah.jpg",
                   description:
                     "Joined Muhammad Huzaifa Attari in building Hunters Group from humble beginnings. Committed to teamwork, business growth, and turning a shared vision into reality.",
+                },
+                {
+                  name: "Dr Salam Ahmad Raza",
+                  role: "CEO",
+                  image: "/team-salam.jpg",
+                  description:
+                    "Leads Hunters Group’s vision, strategy, and business direction. Focused on sustainable growth, strong partnerships, and long-term opportunities.",
                 },
                 {
                   name: "Zunaira atta ur Rehman",
@@ -462,7 +463,7 @@ export default function Home() {
                 },
                 {
                   name: "Mirza Kashan Ali",
-                  role: "Head of IT",
+                  role: "Head of IT & Web Development",
                   image: "/team-kashan.jpg",
                   description:
                     "Oversees technology and digital development at Hunters Group. Focused on improving the company’s digital presence, website experience, and technical solutions.",
