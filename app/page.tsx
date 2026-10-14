@@ -425,20 +425,20 @@ export default function Home() {
           <div className="team-grid">
             {
               [
-                
+
                 {
                   name: "M huzaifa attari",
                   role: "Founder",
                   image: "/team-huzaifa.jpg",
                   description:
-                    "Founded Hunters Group in 2021 with a vision to create opportunities and connect businesses. Driven by ambition, he aims to build a brand that reaches beyond borders.",
+                    "Started Hunters Group in 2021 with a vision to connect businesses and create new opportunities. Driven by ambition to build a brand beyond borders.",
                 },
                 {
                   name: "M Matiullah sultani",
                   role: "Co-Founder",
                   image: "/team-matiullah.jpg",
                   description:
-                    "Joined Muhammad Huzaifa Attari in building Hunters Group from humble beginnings. Committed to teamwork, business growth, and turning a shared vision into reality.",
+                    "Joined the journey of Hunters Group with a shared vision for growth and partnership. Focused on teamwork, business development, and future opportunities.",
                 },
                 {
                   name: "Dr Salam Ahmad Raza",
