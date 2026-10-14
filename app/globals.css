@@ -1972,6 +1972,7 @@ button.bg-blue-700 * {
     font-size: 14px;
   }
 }
+
 /* Detailed Services Overview */
 .service-details-section {
   background: #f7faff;
@@ -2067,6 +2068,7 @@ button.bg-blue-700 * {
     font-size: 18px;
   }
 }
+
 /* Services - Image Card Layout */
 .services-grid {
   display: grid;
@@ -2164,6 +2166,7 @@ button.bg-blue-700 * {
     padding: 18px;
   }
 }
+
 /* Hunters Group - Premium Hero */
 .hero.hero-premium {
   position: relative;
@@ -2190,14 +2193,12 @@ button.bg-blue-700 * {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.98) 28%,
-    rgba(255, 255, 255, 0.9) 43%,
-    rgba(255, 255, 255, 0.42) 59%,
-    rgba(255, 255, 255, 0.02) 78%
-  );
+  background: linear-gradient(90deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.98) 28%,
+      rgba(255, 255, 255, 0.9) 43%,
+      rgba(255, 255, 255, 0.42) 59%,
+      rgba(255, 255, 255, 0.02) 78%);
 }
 
 .hero-premium-content {
@@ -2276,7 +2277,7 @@ button.bg-blue-700 * {
   text-decoration: none;
 }
 
-.hero-scroll-link > span {
+.hero-scroll-link>span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2325,12 +2326,10 @@ button.bg-blue-700 * {
   }
 
   .hero-premium::before {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.99) 0%,
-      rgba(255, 255, 255, 0.94) 50%,
-      rgba(255, 255, 255, 0.45) 100%
-    );
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.99) 0%,
+        rgba(255, 255, 255, 0.94) 50%,
+        rgba(255, 255, 255, 0.45) 100%);
   }
 }
 
@@ -2345,12 +2344,10 @@ button.bg-blue-700 * {
   }
 
   .hero-premium::before {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.93) 58%,
-      rgba(255, 255, 255, 0.72) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.93) 58%,
+        rgba(255, 255, 255, 0.72) 100%);
   }
 
   .hero-premium-content {
@@ -2430,6 +2427,7 @@ button.bg-blue-700 * {
     padding-right: 22px;
   }
 }
+
 /* Premium Hunters Group Team */
 .team-section {
   background: #f5f8fd;
@@ -2572,6 +2570,7 @@ button.bg-blue-700 * {
     font-size: 11px;
   }
 }
+
 /* Fix Team Card Description Styling */
 .team-card .team-info p {
   display: block;
@@ -2726,6 +2725,7 @@ button.bg-blue-700 * {
     transform: translateY(-3px);
   }
 }
+
 /* Premium Footer */
 .site-footer {
   position: relative;
@@ -2829,7 +2829,7 @@ button.bg-blue-700 * {
   font-weight: 750;
 }
 
-.site-footer .footer-column > a {
+.site-footer .footer-column>a {
   color: #b2c1d5;
   font-size: 13px;
   line-height: 1.6;
@@ -2837,7 +2837,7 @@ button.bg-blue-700 * {
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.site-footer .footer-column > a:hover {
+.site-footer .footer-column>a:hover {
   color: #80b1ff;
   transform: translateX(3px);
 }
@@ -2937,5 +2937,161 @@ button.bg-blue-700 * {
     flex-direction: column;
     gap: 12px;
     line-height: 1.7;
+  }
+}
+
+.team-card {
+  cursor: pointer;
+}
+
+.team-card:focus-visible {
+  outline: 3px solid #5795ff;
+  outline-offset: 4px;
+}
+
+.team-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 10, 22, 0.78);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+
+.team-modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
+  width: min(780px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0b1729;
+  color: #fff;
+  border: 1px solid rgba(87, 149, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.team-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: #142b4b;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.team-modal-photo {
+  min-height: 350px;
+  background: #142b4b;
+}
+
+.team-modal-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  object-fit: cover;
+}
+
+.team-modal-content {
+  padding: 42px 30px 30px;
+}
+
+.team-modal-content h2 {
+  margin: 10px 0 24px;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.2;
+}
+
+.team-modal-content h3 {
+  margin-bottom: 10px;
+  color: #8db8ff;
+}
+
+.team-modal-content p {
+  color: #d0d9e8;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .team-modal-overlay {
+    padding: 12px;
+  }
+
+  .team-modal {
+    grid-template-columns: 1fr;
+    max-height: 92vh;
+  }
+
+  .team-modal-photo {
+    height: 260px;
+    min-height: 260px;
+  }
+
+  .team-modal-photo img {
+    height: 260px;
+    min-height: 260px;
+    object-position: center 30%;
+  }
+
+  .team-modal-content {
+    padding: 24px;
+  }
+}
+
+/* Keep team members in the exact requested order */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-flow: row;
+  direction: ltr;
+}
+
+.team-grid>.team-card {
+  order: initial;
+  grid-column: auto;
+  grid-row: auto;
+}
+
+/* CEO highlighted styling without changing its position */
+.team-grid>.team-card-ceo {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Balanced team layout: 3 cards per row */
+@media (min-width: 901px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 30px;
+  }
+
+  .team-photo {
+    width: min(100%, 210px);
   }
 }

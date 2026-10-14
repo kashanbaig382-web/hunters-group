@@ -123,6 +123,13 @@ const steps = [
 ];
 
 export default function Home() {
+  const [selectedMember, setSelectedMember] = useState<{
+    name: string;
+    role: string;
+    image: string;
+    description?: string;
+  } | null>(null);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
 
@@ -183,7 +190,7 @@ export default function Home() {
                 </div>
               )}
             </div>
-          
+
             <a href="#team">Our Team</a>
             <a href="#results">Results</a>
             <a href="#why-us" onClick={closeMenu}>Why Hunters</a>
@@ -307,7 +314,7 @@ export default function Home() {
                 logistics:
                   "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=85",
                 "buyer-sourcing":
-                  "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=85",
+                  "/buyer-support.jpg",
               };
 
               return (
@@ -416,59 +423,129 @@ export default function Home() {
           </div>
 
           <div className="team-grid">
-            {[
-              {
-                name: "Huzaifa",
-                role: "Founder",
-                image: "/team-huzaifa.jpg",
-                description: "Building business opportunities and partnerships.",
-              },
-              {
-                name: "Zunaira",
-                role: "Managing Director",
-                image: "/team-zunaira.jpg",
-                description: "Supporting business operations and coordination.",
-              },
-              {
-                name: "Dr Salam Ahmad Raza",
-                role: "CEO",
-                image: "/team-salam.jpg",
-                description: "Leading the company’s vision and business direction.",
-              },
-              {
-                name: "M. Matiullah",
-                role: "Co-Founder",
-                image: "/team-matiullah.jpg",
-                description: "Contributing to business development and growth.",
-              },
-              {
-                name: "Kashan Ali",
-                role: "Head of IT",
-                image: "/team-kashan.jpg",
-                description: "Managing technology and digital development.",
-              },
-            ].map((member) => (
-              <article
-                className={`team-card ${member.role === "CEO" ? "team-card-ceo" : ""
-                  }`}
-                key={member.name}
+            {
+              [
+                {
+                  name: "Dr Salam Ahmad Raza",
+                  role: "CEO",
+                  image: "/team-salam.jpg",
+                  description:
+                    "Leads Hunters Group’s vision, strategy, and business direction. Focused on sustainable growth, strong partnerships, and long-term opportunities.",
+                },
+                {
+                  name: "M huzaifa attari",
+                  role: "Founder",
+                  image: "/team-huzaifa.jpg",
+                  description:
+                    "Founded Hunters Group in 2021 with a vision to create opportunities and connect businesses. Driven by ambition, he aims to build a brand that reaches beyond borders.",
+                },
+                {
+                  name: "M Matiullah sultani",
+                  role: "Co-Founder",
+                  image: "/team-matiullah.jpg",
+                  description:
+                    "Joined Muhammad Huzaifa Attari in building Hunters Group from humble beginnings. Committed to teamwork, business growth, and turning a shared vision into reality.",
+                },
+                {
+                  name: "Zunaira atta ur Rehman",
+                  role: "Managing Director",
+                  image: "/team-zunaira.jpg",
+                  description:
+                    "Supports the company’s management, coordination, and daily operations. Dedicated to effective teamwork and smooth business processes.",
+                },
+                {
+                  name: "Zhang Yun (张云)",
+                  role: "Head of Import & Export Department",
+                  image: "/team-zhang-yun.jpg",
+                  description:
+                    "Leads the Import & Export Department and supports international trade operations. Focused on cross-border business coordination and global trade opportunities.",
+                },
+                {
+                  name: "Mirza Kashan Ali",
+                  role: "Head of IT",
+                  image: "/team-kashan.jpg",
+                  description:
+                    "Oversees technology and digital development at Hunters Group. Focused on improving the company’s digital presence, website experience, and technical solutions.",
+                },
+              ]
+
+                .map((member) => (
+                  <article
+                    className={`team-card ${member.role === "CEO" ? "team-card-ceo" : ""
+                      }`}
+                    key={member.name}
+                    onClick={() => setSelectedMember(member)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedMember(member);
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <div className="team-photo">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="team-info">
+                      <span className="team-role">{member.role}</span>
+                      <h3>{member.name}</h3>
+                      <p>{member.description ?? "Learn more about this team member."}</p>
+                    </div>
+                  </article>
+                ))}
+          </div>
+          {selectedMember && (
+            <div
+              className="team-modal-overlay"
+              onClick={() => setSelectedMember(null)}
+            >
+              <div
+                className="team-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`${selectedMember.name} profile`}
+                onClick={(e) => e.stopPropagation()}
               >
-                <div className="team-photo">
+                <button
+                  className="team-modal-close"
+                  onClick={() => setSelectedMember(null)}
+                  aria-label="Close profile"
+                >
+                  ×
+                </button>
+
+                <div className="team-modal-photo">
                   <img
-                    src={member.image}
-                    alt={member.name}
-                    loading="lazy"
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
                   />
                 </div>
 
-                <div className="team-info">
-                  <span className="team-role">{member.role}</span>
-                  <h3>{member.name}</h3>
-                  <p>{member.description}</p>
+                <div className="team-modal-content">
+                  <span className="team-role">{selectedMember.role}</span>
+                  <h2>{selectedMember.name}</h2>
+
+                  <h3>About</h3>
+                  <p>
+                    {selectedMember.description ??
+                      `${selectedMember.name} serves as ${selectedMember.role} at Hunters Group, contributing to the company's business operations and objectives.`}
+                  </p>
+
+                  <p>
+                    At Hunters Group, our team works together to support
+                    business growth, international trade, and client relationships.
+                  </p>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
