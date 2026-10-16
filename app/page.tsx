@@ -23,6 +23,7 @@ import {
   Handshake,
   MoveUpRight,
   MessageCircle,
+  Code2,
 } from "lucide-react";
 
 const services = [
@@ -74,6 +75,15 @@ const services = [
       "Connect with suitable suppliers, evaluate sourcing options and simplify your purchasing process.",
     icon: Handshake,
   },
+
+  { number: "07",
+    title: "Web Development",
+    description:
+      "Modern, responsive websites and professional digital solutions designed to strengthen your brand and grow your business online.",
+    icon: Code2,
+    slug: "web-development",
+  },
+
 ];
 
 const advantages = [
@@ -315,6 +325,9 @@ export default function Home() {
                   "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=85",
                 "buyer-sourcing":
                   "/buyer-support.jpg",
+                "web-development":
+                  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=85",
+
               };
 
               return (
