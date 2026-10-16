@@ -327,7 +327,7 @@ ${form.message}`;
         </p>
 
         <span>
-          © {new Date().getFullYear()} Hunters Group. All rights reserved.
+          © 2026 Hunters Group. All rights reserved.
         </span>
       </footer>
     </>
