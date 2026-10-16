@@ -354,7 +354,7 @@ export default function WebDevelopmentPage() {
         </div>
 
         <div className="wd-footer-bottom">
-          <span>© {new Date().getFullYear()} Hunters Group. All rights reserved.</span>
+          <span>© 2026 Hunters Group. All rights reserved.</span>
           <a href="https://wa.me/923250930059">WhatsApp: +92 325 0930059</a>
         </div>
       </footer>
