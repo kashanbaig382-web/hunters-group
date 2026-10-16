@@ -195,7 +195,7 @@ export default function Home() {
             <a href="#results">Results</a>
             <a href="#why-us" onClick={closeMenu}>Why Hunters</a>
             <a href="#process" onClick={closeMenu}>Our Process</a>
-            <a href="#contact" onClick={closeMenu}>Contact</a>
+            <a href="/contact" onClick={closeMenu}>Contact</a>
           </nav>
 
           <a
