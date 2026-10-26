@@ -10,6 +10,7 @@ import {
     BarChart3,
     Boxes,
     Headset,
+    TrendingUp,
 } from "lucide-react";
 
 import type { Metadata } from "next";
@@ -82,6 +83,35 @@ const services = [
             "Payment & App Integration",
             "Conversion Rate Optimisation",
             "Store Management Support",
+        ],
+    },
+
+    {
+        icon: Store,
+        title: "Walmart Marketplace Services",
+        description:
+            "Build your Walmart marketplace presence with seller setup guidance, product research, listing optimization and performance support.",
+        features: [
+            "Seller Account Setup Guidance",
+            "Product Research & Validation",
+            "Product Listing Optimization",
+            "Marketplace SEO",
+            "Catalog Management Support",
+            "Store Performance Review",
+        ],
+    },
+    {
+        icon: TrendingUp,
+        title: "TikTok Shop Services",
+        description:
+            "Explore TikTok Shop support for shop setup, product listings, product presentation and social commerce operations.",
+        features: [
+            "Shop Setup Guidance",
+            "Product Listing Support",
+            "Product Content Planning",
+            "Catalog Organization",
+            "Shop Operations Support",
+            "Performance Review",
         ],
     },
 ];
@@ -233,9 +263,50 @@ export default function EcommercePage() {
                                 key={service.title}
                                 className="group rounded-2xl border border-slate-200 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-950/5"
                             >
-                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
-                                    <Icon size={23} />
+
+                                <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-slate-100 bg-white p-2.5 shadow-sm transition group-hover:border-blue-100 group-hover:bg-blue-50">
+                                    {service.title.includes("Amazon") ? (
+                                        <img
+                                            src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                                            alt="Amazon"
+                                            className="h-auto w-full object-contain"
+                                        />
+                                    ) : service.title.includes("eBay") ? (
+                                        <img
+                                            src="https://cdn.simpleicons.org/ebay/3665F3"
+                                            alt="eBay"
+                                            className="h-auto w-full object-contain"
+                                        />
+                                    ) : service.title.includes("Etsy") ? (
+                                        <img
+                                            src="https://cdn.simpleicons.org/etsy/F1641E"
+                                            alt="Etsy"
+                                            className="h-auto w-full object-contain"
+                                        />
+                                    ) : service.title.includes("Shopify") ? (
+                                        <img
+                                            src="https://cdn.simpleicons.org/shopify/7AB55C"
+                                            alt="Shopify"
+                                            className="h-auto w-full object-contain"
+                                        />
+                                    ) : service.title.includes("Walmart") ? (
+
+                                        <img
+                                            src="/walmart.png"
+                                            alt="Walmart"
+                                            className="h-auto w-full object-contain"
+                                        />
+
+
+
+                                    ) : service.title.includes("TikTok") ? (
+                                        <img src="https://cdn.simpleicons.org/tiktok/000000" alt="TikTok Shop" className="h-auto w-full object-contain" />
+                                    ) : (
+
+                                        <Icon size={23} />
+                                    )}
                                 </div>
+
 
                                 <p className="mt-6 text-sm font-semibold text-blue-600">
                                     {String(index + 1).padStart(2, "0")}
@@ -269,17 +340,43 @@ export default function EcommercePage() {
                                         ))}
                                     </ul>
 
-                                    <a
-                                        href={`https://wa.me/923238874539?text=${encodeURIComponent(
-                                            `Hello Hunters Group, I am interested in your ${service.title}. Please share more details.`
-                                        )}`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="mt-7 inline-flex items-center gap-2 font-semibold text-blue-600 transition hover:text-blue-800"
-                                    >
-                                        Enquire About This Service
-                                        <ArrowUpRight size={17} />
-                                    </a>
+
+                                    <div className="mt-7 flex flex-wrap items-center gap-4">
+                                        <Link
+                                            href={
+                                                service.title.includes("Amazon")
+                                                    ? "/services/ecommerce/amazon"
+                                                    : service.title.includes("Shopify")
+                                                        ? "/services/ecommerce/shopify"
+                                                        : service.title.includes("eBay")
+                                                            ? "/services/ecommerce/ebay"
+                                                            : service.title.includes("Etsy")
+                                                                ? "/services/ecommerce/etsy"
+                                                                : service.title.includes("Walmart")
+                                                                    ? "/services/ecommerce/walmart"
+                                                                    : service.title.includes("TikTok")
+                                                                        ? "/services/ecommerce/tiktok-shop"
+                                                                        : "/contact"
+
+                                            }
+                                            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
+                                        >
+                                            Explore Platform
+                                            <ArrowRight size={17} />
+                                        </Link>
+
+                                        <a
+                                            href={`https://wa.me/923238874539?text=${encodeURIComponent(
+                                                `Hello Hunters Group, I am interested in your ${service.title}. Please share more details.`
+                                            )}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 font-semibold text-blue-600 transition hover:text-blue-800"
+                                        >
+                                            Enquire <ArrowUpRight size={17} />
+                                        </a>
+                                    </div>
+
                                 </div>
                             </article>
                         );

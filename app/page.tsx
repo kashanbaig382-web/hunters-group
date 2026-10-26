@@ -76,7 +76,8 @@ const services = [
     icon: Handshake,
   },
 
-  { number: "07",
+  {
+    number: "07",
     title: "Web Development",
     description:
       "Modern, responsive websites and professional digital solutions designed to strengthen your brand and grow your business online.",
@@ -201,6 +202,9 @@ export default function Home() {
               )}
             </div>
             <a href="#results">Results</a>
+            <a href="/events" onClick={closeMenu}>
+              Events
+            </a>
             <a href="#why-us" onClick={closeMenu}>Why Hunters</a>
             <a href="#process" onClick={closeMenu}>Our Process</a>
             <a href="/contact" onClick={closeMenu}>Contact</a>
@@ -281,32 +285,31 @@ export default function Home() {
         </div>
       </section>
 
+
       <section className="section services-section" id="services">
         <div className="container">
-          <div className="section-heading services-heading">
+          <div className="services-redesign-heading">
             <div>
-              <span className="eyebrow">WHAT WE DO</span>
+              <span className="eyebrow">OUR SERVICES</span>
               <h2>
-                Everything your business
+                Solutions built for
                 <br />
-                needs to <span>move forward.</span>
+                <span>your next stage of growth.</span>
               </h2>
             </div>
-            <div className="heading-aside">
+
+            <div className="services-redesign-intro">
               <p>
-                Practical business services, thoughtfully connected to help
-                simplify the way you source, sell, store and ship.
+                From online marketplaces to international trade, explore
+                business solutions designed around your goals.
               </p>
-              <a
-                href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
-                target="_blank"
-                rel="noreferrer"
-                className="text-link">
+              <a href="/contact" className="services-view-all">
                 Discuss your requirements <ArrowRight size={16} />
               </a>
             </div>
           </div>
-          <div className="services-grid">
+
+          <div className="services-redesign-grid">
             {services.map((service) => {
               const Icon = service.icon;
 
@@ -321,48 +324,100 @@ export default function Home() {
                   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85",
                 logistics:
                   "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=85",
-                "buyer-sourcing":
-                  "/buyer-support.jpg",
+                "buyer-sourcing": "/buyer-support.jpg",
                 "web-development":
                   "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=85",
-
               };
 
               return (
-                <article className="service-card" key={service.number}>
-                  <div className="service-card-image">
+                <article
+                  className="service-redesign-card"
+                  key={service.number}
+                >
+                  <a
+                    href={`/services/${service.slug}`}
+                    className="service-redesign-image"
+                    aria-label={`Explore ${service.title}`}
+                  >
                     <img
                       src={serviceImages[service.slug]}
                       alt={service.title}
                       loading="lazy"
                     />
-                  </div>
+                    <span className="service-redesign-number">
+                      {service.number}
+                    </span>
+                    <span className="service-redesign-image-arrow">
+                      <ArrowUpRight size={20} />
+                    </span>
+                  </a>
 
-                  <div className="service-card-content">
-                    <div className="service-topline">
-                      <span className="service-number">{service.number}</span>
-                      <span className="service-icon">
-                        <Icon size={22} />
-                      </span>
+                  <div className="service-redesign-content">
+                    <div className="service-redesign-icon">
+                      <Icon size={22} />
                     </div>
 
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
 
+
+
+                    {service.slug === "ecommerce" && (
+                      <div className="service-platform-logos">
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                          alt="Amazon"
+                          title="Amazon"
+                        />
+                        <img
+                          src="https://cdn.simpleicons.org/shopify/7AB55C"
+                          alt="Shopify"
+                          title="Shopify"
+                        />
+                        <img
+                          src="https://cdn.simpleicons.org/ebay/3665F3"
+                          alt="eBay"
+                          title="eBay"
+                        />
+                        <img
+                          src="https://cdn.simpleicons.org/etsy/F1641E"
+                          alt="Etsy"
+                          title="Etsy"
+                        />
+                        <img
+                          src="/walmart.png"
+                          alt="Walmart"
+                          title="Walmart"
+                        />
+                        <img
+                          src="https://cdn.simpleicons.org/tiktok/000000"
+                          alt="TikTok Shop"
+                          title="TikTok Shop"
+                        />
+                      </div>
+                    )}
+
                     <a
                       href={`/services/${service.slug}`}
-                      className="service-link"
-                      aria-label={`Learn more about ${service.title}`}
+                      className="service-redesign-link"
                     >
-                      Learn More <ArrowUpRight size={17} />
+                      Explore Service <ArrowRight size={16} />
                     </a>
                   </div>
                 </article>
               );
             })}
           </div>
+
+          <div className="services-redesign-bottom">
+            <span>ONE PARTNER. MULTIPLE BUSINESS SOLUTIONS.</span>
+            <a href="/contact">
+              Let&apos;s discuss your goals <ArrowUpRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
+
 
       {/* Registrations & Affiliations */}
       <section className="registrations-section section" id="registrations">
