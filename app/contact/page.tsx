@@ -52,8 +52,7 @@ ${form.message}`;
 
         <div className="contact-nav-links">
           <a href="/#home">Home</a>
-          <a href="/#about">About Us</a>
-          <a href="/#team">Our Team</a>
+          <a href="/about">About Us</a>
 
           <div className="contact-nav-dropdown">
             <a href="/#services">Services ▾</a>

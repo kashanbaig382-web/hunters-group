@@ -143,7 +143,7 @@ export default function BuyerSourcingPage() {
                         <a href="/#services" className="transition hover:text-blue-600">
                             All Services
                         </a>
-                        <a href="/#about" className="transition hover:text-blue-600">
+                        <a href="/about" className="transition hover:text-blue-600">
                             About Us
                         </a>
                         <a href="/#contact" className="transition hover:text-blue-600">

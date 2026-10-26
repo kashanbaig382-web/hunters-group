@@ -175,7 +175,7 @@ export default function Home() {
 
           <nav className={`nav-links ${menuOpen ? "nav-open" : ""}`}>
             <a href="#home" onClick={closeMenu}>Home</a>
-            <a href="#about" onClick={closeMenu}>About Us</a>
+            <a href="/about" onClick={closeMenu}>About Us</a>
 
             <div className="nav-dropdown">
               <button
@@ -200,8 +200,6 @@ export default function Home() {
                 </div>
               )}
             </div>
-
-            <a href="#team">Our Team</a>
             <a href="#results">Results</a>
             <a href="#why-us" onClick={closeMenu}>Why Hunters</a>
             <a href="#process" onClick={closeMenu}>Our Process</a>
@@ -363,203 +361,6 @@ export default function Home() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="about-section section" id="about">
-        <div className="container about-grid">
-          <div className="about-visual">
-            <img
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=85"
-              alt="Organised warehouse shelves and logistics operations"
-              loading="lazy"
-            />
-            <div className="image-label">
-              <span className="image-label-icon"><Boxes size={20} /></span>
-              <span>
-                <strong>Trade meets efficiency.</strong>
-                <small>One connected approach</small>
-              </span>
-            </div>
-            <div className="visual-corner">HG.</div>
-          </div>
-
-          <div className="about-copy">
-            <span className="eyebrow">ABOUT HUNTERS GROUP</span>
-            <h2>
-              More than services.
-              <br />
-              <span>A partner in progress.</span>
-            </h2>
-            <p>
-              Every business has different goals. Hunters Group brings
-              together e-commerce support, import and export services,
-              sourcing and warehousing to help businesses manage their
-              operations with greater clarity.
-            </p>
-            <p>
-              Our focus is simple: understand your requirements, identify
-              practical solutions and help you take the next step with
-              confidence.
-            </p>
-            <a
-              href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
-              target="_blank"
-              rel="noreferrer"
-              className="button button-primary about-button">
-              Get to Know Us <ArrowRight size={17} />
-            </a>
-
-            <div className="about-note">
-              <span className="note-line" />
-              <span>Built around your business needs.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Premium Team Section */}
-      <section className="team-section section" id="team">
-        <div className="container">
-          <div className="section-heading team-heading">
-            <div>
-              <span className="eyebrow">OUR TEAM</span>
-              <h2>
-                Meet the People Behind <span>Hunters Group</span>
-              </h2>
-              <p>
-                A dedicated team working together to support our business
-                operations and global trade goals.
-              </p>
-            </div>
-          </div>
-
-          <div className="team-grid">
-            {
-              [
-
-                {
-                  name: "M huzaifa attari",
-                  role: "Founder",
-                  image: "/team-huzaifa.jpg",
-                  description:
-                    "Started Hunters Group in 2021 with a vision to connect businesses and create new opportunities. Driven by ambition to build a brand beyond borders.",
-                },
-                {
-                  name: "M Matiullah sultani",
-                  role: "Co-Founder",
-                  image: "/team-matiullah.jpg",
-                  description:
-                    "Joined the journey of Hunters Group with a shared vision for growth and partnership. Focused on teamwork, business development, and future opportunities.",
-                },
-                {
-                  name: "Dr Salam Ahmad Raza",
-                  role: "CEO",
-                  image: "/team-salam.jpg",
-                  description:
-                    "Leads Hunters Group’s vision, strategy, and business direction. Focused on sustainable growth, strong partnerships, and long-term opportunities.",
-                },
-                {
-                  name: "Zunaira atta ur Rehman",
-                  role: "Managing Director",
-                  image: "/team-zunaira.jpg",
-                  description:
-                    "Supports the company’s management, coordination, and daily operations. Dedicated to effective teamwork and smooth business processes.",
-                },
-                {
-                  name: "Zhang Yun (张云)",
-                  role: "Head of Import & Export Department",
-                  image: "/team-zhang-yun.jpg",
-                  description:
-                    "Leads the Import & Export Department and supports international trade operations. Focused on cross-border business coordination and global trade opportunities.",
-                },
-                {
-                  name: "Mirza Kashan Ali",
-                  role: "Head of IT & Web Development",
-                  image: "/team-kashan.jpg",
-                  description:
-                    "Oversees technology and digital development at Hunters Group. Focused on improving the company’s digital presence, website experience, and technical solutions.",
-                },
-              ]
-
-                .map((member) => (
-                  <article
-                    className={`team-card ${member.role === "CEO" ? "team-card-ceo" : ""
-                      }`}
-                    key={member.name}
-                    onClick={() => setSelectedMember(member)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setSelectedMember(member);
-                      }
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className="team-photo">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <div className="team-info">
-                      <span className="team-role">{member.role}</span>
-                      <h3>{member.name}</h3>
-                      <p>{member.description ?? "Learn more about this team member."}</p>
-                    </div>
-                  </article>
-                ))}
-          </div>
-          {selectedMember && (
-            <div
-              className="team-modal-overlay"
-              onClick={() => setSelectedMember(null)}
-            >
-              <div
-                className="team-modal"
-                role="dialog"
-                aria-modal="true"
-                aria-label={`${selectedMember.name} profile`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  className="team-modal-close"
-                  onClick={() => setSelectedMember(null)}
-                  aria-label="Close profile"
-                >
-                  ×
-                </button>
-
-                <div className="team-modal-photo">
-                  <img
-                    src={selectedMember.image}
-                    alt={selectedMember.name}
-                  />
-                </div>
-
-                <div className="team-modal-content">
-                  <span className="team-role">{selectedMember.role}</span>
-                  <h2>{selectedMember.name}</h2>
-
-                  <h3>About</h3>
-                  <p>
-                    {selectedMember.description ??
-                      `${selectedMember.name} serves as ${selectedMember.role} at Hunters Group, contributing to the company's business operations and objectives.`}
-                  </p>
-
-                  <p>
-                    At Hunters Group, our team works together to support
-                    business growth, international trade, and client relationships.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
@@ -798,10 +599,9 @@ export default function Home() {
           <div className="footer-column">
             <h4>Explore</h4>
             <a href="#home">Home</a>
-            <a href="#about">About Us</a>
+            <a href="/about">About Us</a>
             <a href="#why-us">Why Hunters</a>
             <a href="#process">Our Process</a>
-            <a href="#team">Our Team</a>
           </div>
 
           {/* Services */}

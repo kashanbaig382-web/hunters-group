@@ -111,8 +111,8 @@ export default function WebDevelopmentPage() {
 
         <nav className={`wd-nav-links ${menuOpen ? "wd-nav-open" : ""}`}>
           <a href="/#home" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="/#about" onClick={() => setMenuOpen(false)}>About Us</a>
-          <a href="/#team" onClick={() => setMenuOpen(false)}>Our Team</a>
+          <a href="/about" onClick={() => setMenuOpen(false)}>About Us</a>
+          <a href="//#team" onClick={() => setMenuOpen(false)}>Our Team</a>
 
           <div className="wd-nav-dropdown">
             <button

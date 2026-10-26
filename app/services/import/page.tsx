@@ -147,7 +147,7 @@ export default function ImportServicesPage() {
               All Services
             </a>
             <a
-              href="/#about"
+              href="/about"
               className="transition hover:text-blue-600"
             >
               About Us
