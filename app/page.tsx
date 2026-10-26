@@ -209,7 +209,7 @@ export default function Home() {
           </nav>
 
           <a
-            href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+            href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
             target="_blank"
             rel="noreferrer"
             className="button button-primary nav-cta">
@@ -246,7 +246,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://wa.me/923250930059"
+                href="https://wa.me/923238874539"
                 target="_blank"
                 rel="noreferrer"
                 className="button button-secondary"
@@ -300,7 +300,7 @@ export default function Home() {
                 simplify the way you source, sell, store and ship.
               </p>
               <a
-                href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+                href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
                 target="_blank"
                 rel="noreferrer"
                 className="text-link">
@@ -403,7 +403,7 @@ export default function Home() {
               confidence.
             </p>
             <a
-              href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+              href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
               target="_blank"
               rel="noreferrer"
               className="button button-primary about-button">
@@ -663,7 +663,7 @@ export default function Home() {
               your business.
             </p>
             <a
-              href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+              href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
               target="_blank"
               rel="noreferrer"
               className="text-link">
@@ -739,7 +739,7 @@ export default function Home() {
           </div>
 
           <a
-            href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
+            href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services."
             target="_blank"
             rel="noreferrer"
             className="button button-white"
@@ -789,8 +789,8 @@ export default function Home() {
               </a>
             </div>
 
-            <a className="footer-phone" href="tel:+923250930059">
-              +92 325 0930059
+            <a className="footer-phone" href="tel:+923238874539">
+              +92 323 8874539
             </a>
           </div>
 
@@ -825,7 +825,7 @@ export default function Home() {
             </p>
 
             <a
-              href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services"
+              href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20your%20services"
               target="_blank"
               rel="noreferrer"
               className="footer-contact-link"

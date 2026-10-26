@@ -86,7 +86,7 @@ const services = [
     },
 ];
 const whatsappLink =
-    "https://wa.me/923250930059?text=" +
+    "https://wa.me/923238874539?text=" +
     encodeURIComponent(
         "Hello Hunters Group, I am interested in your Export Services. Please share more details."
     );
@@ -161,7 +161,7 @@ export default function EcommercePage() {
 
                         <div className="mt-9 flex flex-wrap gap-4">
                             <a
-                                href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20am%20interested%20in%20your%20E-Commerce%20Solutions."
+                                href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20am%20interested%20in%20your%20E-Commerce%20Solutions."
                                 target="_blank"
                                 rel="noreferrer"
                                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-4 font-semibold !text-white transition hover:bg-blue-700"
@@ -270,7 +270,7 @@ export default function EcommercePage() {
                                     </ul>
 
                                     <a
-                                        href={`https://wa.me/923250930059?text=${encodeURIComponent(
+                                        href={`https://wa.me/923238874539?text=${encodeURIComponent(
                                             `Hello Hunters Group, I am interested in your ${service.title}. Please share more details.`
                                         )}`}
                                         target="_blank"
@@ -351,7 +351,7 @@ export default function EcommercePage() {
                     </p>
 
                     <a
-                        href="https://wa.me/923250930059?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20E-Commerce%20Solutions."
+                        href="https://wa.me/923238874539?text=Hello%20Hunters%20Group%2C%20I%20would%20like%20to%20discuss%20E-Commerce%20Solutions."
                         target="_blank"
                         rel="noreferrer"
                         className="mt-8 inline-flex items-center gap-2 rounded-lg !bg-white px-6 py-4 !font-semibold !text-blue-700 transition hover:!bg-blue-50"

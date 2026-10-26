@@ -143,7 +143,7 @@ export default function WebDevelopmentPage() {
           <a href="/contact" onClick={() => setMenuOpen(false)}>Contact</a>
 
           <a
-            href="https://wa.me/923250930059"
+            href="https://wa.me/923238874539"
             target="_blank"
             rel="noopener noreferrer"
             className="wd-nav-cta"
@@ -174,7 +174,7 @@ export default function WebDevelopmentPage() {
             <div className="wd-actions">
               <a
                 className="wd-btn wd-btn-primary"
-                href="https://wa.me/923250930059?text=Hi%20Hunters%20Group%2C%20I%20want%20to%20discuss%20a%20website%20project."
+                href="https://wa.me/923238874539?text=Hi%20Hunters%20Group%2C%20I%20want%20to%20discuss%20a%20website%20project."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -326,7 +326,7 @@ export default function WebDevelopmentPage() {
           </p>
           <a
             className="wd-btn wd-btn-primary"
-            href="https://wa.me/923250930059?text=Hi%20Hunters%20Group%2C%20I%20am%20interested%20in%20your%20web%20development%20services."
+            href="https://wa.me/923238874539?text=Hi%20Hunters%20Group%2C%20I%20am%20interested%20in%20your%20web%20development%20services."
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -355,7 +355,7 @@ export default function WebDevelopmentPage() {
 
         <div className="wd-footer-bottom">
           <span>© 2026 Hunters Group. All rights reserved.</span>
-          <a href="https://wa.me/923250930059">WhatsApp: +92 325 0930059</a>
+          <a href="https://wa.me/923238874539">WhatsApp: +92 325 0930059</a>
         </div>
       </footer>
     </div>

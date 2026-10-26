@@ -20,7 +20,7 @@ export default function ContactPage() {
     message: "",
   });
 
-  const whatsapp = "923250930059";
+  const whatsapp = "923238874539";
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

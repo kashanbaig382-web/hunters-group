@@ -113,7 +113,7 @@ const faqs = [
 ];
 
 const whatsappLink =
-    "https://wa.me/923250930059?text=" +
+    "https://wa.me/923238874539?text=" +
     encodeURIComponent(
         "Hello Hunters Group, I am interested in your Warehousing Services. Please share more details."
     );
@@ -492,7 +492,7 @@ export default function WarehousingPage() {
                             Facebook
                         </a>
                         <a
-                            href="https://wa.me/923250930059"
+                            href="https://wa.me/923238874539"
                             target="_blank"
                             rel="noreferrer"
                             className="transition hover:text-blue-600"
