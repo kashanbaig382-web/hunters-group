@@ -99,6 +99,10 @@ export default function AboutPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
+  const [selectedPerson, setSelectedPerson] = useState<
+    (typeof leaders)[number] | (typeof teamMembers)[number] | null
+  >(null);
+
   const closeMenu = () => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
@@ -167,9 +171,8 @@ export default function AboutPage() {
               </button>
 
               <div
-                className={`nav-dropdown-menu ${
-                  servicesOpen ? "is-open" : ""
-                }`}
+                className={`nav-dropdown-menu ${servicesOpen ? "is-open" : ""
+                  }`}
               >
                 {services.map((service) => (
                   <Link
@@ -301,24 +304,33 @@ export default function AboutPage() {
           </div>
 
           <div className="about-leaders-grid">
-            {leaders.map((leader) => (
-              <article className="about-team-card" key={leader.name}>
+            {leaders.map((leader, index) => (
+              <article
+                className={`about-team-card ${index === 0 ? "about-ceo-card" : ""
+                  }`}
+                key={leader.name}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${leader.name}'s profile`}
+                onClick={() => setSelectedPerson(leader)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelectedPerson(leader);
+                  }
+                }}
+              >
                 <div className="about-team-image">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    loading="lazy"
-                  />
+                  <img src={leader.image} alt={leader.name} loading="lazy" />
                 </div>
 
                 <div className="about-team-content">
-                  <span className="about-team-role">
-                    {leader.role}
-                  </span>
-
+                  <span className="about-team-role">{leader.role}</span>
                   <h3>{leader.name}</h3>
-
                   <p>{leader.description}</p>
+                  <span className="about-profile-link">
+                    View Profile <ArrowUpRight size={15} />
+                  </span>
                 </div>
               </article>
             ))}
@@ -348,23 +360,31 @@ export default function AboutPage() {
 
           <div className="about-members-grid">
             {teamMembers.map((member) => (
-              <article className="about-team-card" key={member.name}>
+              <article
+                className="about-team-card"
+                key={member.name}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${member.name}'s profile`}
+                onClick={() => setSelectedPerson(member)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelectedPerson(member);
+                  }
+                }}
+              >
                 <div className="about-team-image">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    loading="lazy"
-                  />
+                  <img src={member.image} alt={member.name} loading="lazy" />
                 </div>
 
                 <div className="about-team-content">
-                  <span className="about-team-role">
-                    {member.role}
-                  </span>
-
+                  <span className="about-team-role">{member.role}</span>
                   <h3>{member.name}</h3>
-
                   <p>{member.description}</p>
+                  <span className="about-profile-link">
+                    View Profile <ArrowUpRight size={15} />
+                  </span>
                 </div>
               </article>
             ))}
@@ -467,6 +487,50 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
+      {selectedPerson && (
+        <div
+          className="about-modal-overlay"
+          onClick={() => setSelectedPerson(null)}
+        >
+          <section
+            className="about-profile-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedPerson.name} profile`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="about-modal-close"
+              aria-label="Close profile"
+              onClick={() => setSelectedPerson(null)}
+            >
+              <X size={22} />
+            </button>
+
+            <div className="about-modal-image">
+              <img src={selectedPerson.image} alt={selectedPerson.name} />
+            </div>
+
+            <div className="about-modal-content">
+              <span className="about-team-role">{selectedPerson.role}</span>
+              <h2>{selectedPerson.name}</h2>
+              <div className="about-blue-line" />
+              <p>{selectedPerson.description}</p>
+
+              <a
+                href="https://wa.me/923238874539"
+                target="_blank"
+                rel="noreferrer"
+                className="about-primary-btn"
+              >
+                Contact Hunters Group
+                <ArrowUpRight size={17} />
+              </a>
+            </div>
+          </section>
+        </div>
+      )}
     </main>
   );
 }

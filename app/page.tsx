@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+
 import {
   ArrowDownRight,
   ArrowRight,
@@ -147,6 +148,7 @@ export default function Home() {
   const closeMenu = () => {
     setMenuOpen(false);
     setServiceOpen(false);
+    
   };
 
   return (
@@ -359,43 +361,6 @@ export default function Home() {
 
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
-
-
-
-                    {service.slug === "ecommerce" && (
-                      <div className="service-platform-logos">
-                        <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-                          alt="Amazon"
-                          title="Amazon"
-                        />
-                        <img
-                          src="https://cdn.simpleicons.org/shopify/7AB55C"
-                          alt="Shopify"
-                          title="Shopify"
-                        />
-                        <img
-                          src="https://cdn.simpleicons.org/ebay/3665F3"
-                          alt="eBay"
-                          title="eBay"
-                        />
-                        <img
-                          src="https://cdn.simpleicons.org/etsy/F1641E"
-                          alt="Etsy"
-                          title="Etsy"
-                        />
-                        <img
-                          src="/walmart.png"
-                          alt="Walmart"
-                          title="Walmart"
-                        />
-                        <img
-                          src="https://cdn.simpleicons.org/tiktok/000000"
-                          alt="TikTok Shop"
-                          title="TikTok Shop"
-                        />
-                      </div>
-                    )}
 
                     <a
                       href={`/services/${service.slug}`}
