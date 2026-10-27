@@ -214,33 +214,68 @@ export default function AboutPage() {
       </header>
 
       {/* HERO */}
+
       <section className="about-hero">
-        <div className="about-container">
-          <span className="about-eyebrow">GET TO KNOW US</span>
+        <div className="about-container about-hero-grid">
+          <div className="about-hero-copy">
+            <span className="about-eyebrow">
+              GET TO KNOW HUNTERS GROUP
+            </span>
 
-          <h1>
-            Building Businesses.
-            <span>Connecting the World.</span>
-          </h1>
+            <h1>
+              Building Businesses.
+              <span>Connecting the World.</span>
+            </h1>
 
-          <p>
-            Empowering businesses through innovation, technology,
-            e-commerce solutions, digital services, and global trade.
-          </p>
+            <p>
+              Empowering businesses through innovation, technology,
+              e-commerce solutions, digital services, and global trade.
+            </p>
 
-          <div className="about-hero-actions">
-            <Link href="/contact" className="about-primary-btn">
-              Let's Work Together
-              <ArrowUpRight size={17} />
-            </Link>
+            <div className="about-hero-actions">
+              <Link href="/contact" className="about-primary-btn">
+                Let&apos;s Work Together <ArrowUpRight size={17} />
+              </Link>
 
-            <a href="#about-hunters" className="about-secondary-btn">
-              Discover Our Story
-              <ArrowRight size={17} />
-            </a>
+              <a href="#about-hunters" className="about-secondary-btn">
+                Discover Our Story <ArrowRight size={17} />
+              </a>
+            </div>
+
+            <div className="about-hero-trust">
+              <span className="about-trust-dot" />
+              <span>Building Global Opportunities Since 2021</span>
+            </div>
+          </div>
+
+          <div className="about-hero-brand">
+            <div className="about-hero-brand-glow" />
+
+            <div className="about-hero-logo-card">
+              <span className="about-logo-caption">OUR IDENTITY</span>
+              <img
+                src="/hunters-logo.png"
+                alt="Hunters Group Logo"
+              />
+              <h2>HUNTERS GROUP</h2>
+              <p>Building Global Opportunities</p>
+              <div className="about-logo-divider" />
+              <span className="about-logo-tagline">
+                Innovation · Technology · Global Trade
+              </span>
+            </div>
+
+            <div className="about-hero-floating-label">
+              <Globe2 size={20} />
+              <div>
+                <strong>Global Vision</strong>
+                <span>Local Expertise</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* OUR STORY */}
       <section className="about-story" id="about-hunters">
