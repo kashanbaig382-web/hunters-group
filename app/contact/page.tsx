@@ -151,7 +151,7 @@ ${form.message}`;
                 </span>
                 <span>
                   <small>WhatsApp</small>
-                  <strong>+92 325 0930059</strong>
+                  <strong>+92 323 8874539</strong>
                 </span>
               </a>
 
@@ -164,7 +164,7 @@ ${form.message}`;
                 </span>
                 <span>
                   <small>Call Us</small>
-                  <strong>+92 325 0930059</strong>
+                  <strong>+92 323 8874539</strong>
                 </span>
               </a>
 
