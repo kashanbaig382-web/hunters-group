@@ -93,7 +93,7 @@ const pastEvents = [
   },
 ];
 
-const showUpcomingEvent = true;
+const showUpcomingEvent = false;
 
 
 export default function EventsPage() {
@@ -367,106 +367,6 @@ export default function EventsPage() {
         id="upcoming-events"
         className="scroll-mt-28 bg-slate-50 px-6 py-20 md:px-10"
       >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-blue-600">
-              Coming Next
-            </p>
-
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Upcoming Events
-            </h2>
-
-            <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-              Explore upcoming seminars, youth summits, and professional
-              opportunities with Hunters Group.
-            </p>
-          </div>
-
-          <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm md:grid md:grid-cols-[0.85fr_1.15fr]">
-            <div className="flex min-h-[260px] flex-col justify-between bg-gradient-to-br from-blue-950 via-blue-900 to-blue-700 p-8 text-white md:p-10">
-              <div>
-                <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                  Upcoming Event
-                </span>
-
-                <p className="mt-8 text-sm font-bold tracking-widest text-blue-200">
-                  PAKISTAN · 2K26
-                </p>
-
-                <h3 className="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">
-                  Pakistan Youth Impact Summit 2K26
-                </h3>
-
-                <p className="mt-4 text-sm leading-6 text-blue-100">
-                  Empowering the Next Generation of Leaders
-                </p>
-              </div>
-
-              <p className="mt-8 text-sm font-semibold text-white/80">
-                In collaboration with Digital Minds Pakistan
-              </p>
-            </div>
-
-            <div className="p-7 md:p-10">
-              <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
-                Youth Leadership &amp; Impact
-              </span>
-
-              <p className="mt-5 leading-7 text-slate-600">
-                Digital Minds Pakistan is collaborating with Pakistan Youth
-                Impact Summit 2026, organized by Jannat-ul-Firdous Trust
-                (JUF Trust). The summit celebrates youth leadership and
-                positive contributions toward Pakistan’s future.
-              </p>
-
-              <div className="mt-7 space-y-4">
-                <div className="flex gap-3">
-                  <span className="text-xl">📅</span>
-                  <div>
-                    <p className="font-bold text-slate-900">Friday, 30 October 2026</p>
-                    <p className="text-sm text-slate-500">Event date</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <span className="text-xl">⏰</span>
-                  <div>
-                    <p className="font-bold text-slate-900">10:00 AM – 4:00 PM</p>
-                    <p className="text-sm text-slate-500">Event timings</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <span className="text-xl">📍</span>
-                  <div>
-                    <p className="font-bold text-slate-900">Main Auditorium, UCP A Building</p>
-                    <p className="text-sm text-slate-500">Lahore, Pakistan</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-7 rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
-                <p className="font-bold text-emerald-800">
-                  🎟️ Free Registration
-                </p>
-                <p className="mt-1 text-sm leading-6 text-emerald-700">
-                  Free registration is offered through Digital Minds Pakistan.
-                  Award nominations are also available for eligible contributors.
-                </p>
-              </div>
-
-              <a
-                href="https://wa.me/923238874539?text=Hello%2C%20I%20want%20to%20know%20about%20Pakistan%20Youth%20Impact%20Summit%202K26%20registration."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-700 sm:w-auto"
-              >
-                Get Registration Details →
-              </a>
-            </div>
-          </article>
-        </div>
       </section>
 
 
