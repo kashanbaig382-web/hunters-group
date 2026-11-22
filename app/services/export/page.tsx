@@ -238,7 +238,7 @@ export default function ExportServicesPage() {
                         <div className="absolute -inset-4 rounded-3xl bg-blue-200/40 blur-2xl" />
                         <div className="relative overflow-hidden rounded-3xl border border-white bg-white p-3 shadow-2xl shadow-blue-950/10">
                             <img
-                                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85"
+                                src="/services/export.png"
                                 alt="Cargo containers prepared for international export"
                                 className="h-[300px] w-full rounded-2xl object-cover sm:h-[390px]"
                             />

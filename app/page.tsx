@@ -53,7 +53,7 @@ const services = [
     icon: Plane,
   },
   {
-    number: "05",
+    number: "04",
     title: "Logistics & Shipping",
     slug: "logistics",
     description:
@@ -61,7 +61,7 @@ const services = [
     icon: Truck,
   },
   {
-    number: "06",
+    number: "05",
     title: "Buyer & Sourcing Support",
     slug: "buyer-sourcing",
     description:
@@ -70,7 +70,7 @@ const services = [
   },
 
   {
-    number: "07",
+    number: "06",
     title: "Web Development",
     description:
       "Modern, responsive websites and professional digital solutions designed to strengthen your brand and grow your business online.",
@@ -138,6 +138,16 @@ export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
+  const [aiOpen, setAiOpen] = useState(false);
+  const [aiMessage, setAiMessage] = useState("");
+  const [aiMessages, setAiMessages] = useState([
+    {
+      role: "assistant",
+      content:
+        "Hello! Welcome to Hunters Group. I'm your AI assistant. How can I help you today?",
+    },
+  ]);
+  const [aiLoading, setAiLoading] = useState(false);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -330,19 +340,16 @@ export default function Home() {
             {services.map((service) => {
               const Icon = service.icon;
 
+
               const serviceImages: Record<string, string> = {
-                ecommerce:
-                  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85",
-                import:
-                  "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=85",
-                export:
-                  "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=900&q=85",
-                logistics:
-                  "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=85",
-                "buyer-sourcing": "/buyer-support.jpg",
-                "web-development":
-                  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=85",
+                ecommerce: "/services/ecommerce.png",
+                import: "/services/import.png",
+                export: "/services/export.png",
+                logistics: "/services/logistics.png",
+                "buyer-sourcing": "/services/buyer-support.jpg",
+                "web-development": "/services/web-development.png",
               };
+
 
               return (
                 <article
@@ -628,6 +635,244 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {aiOpen && (
+        <div
+          style={{
+            position: "fixed",
+            right: "24px",
+            bottom: "95px",
+            width: "min(370px, calc(100vw - 32px))",
+            height: "480px",
+            maxHeight: "calc(100vh - 130px)",
+            background: "#ffffff",
+            borderRadius: "18px",
+            boxShadow: "0 15px 50px rgba(0,0,0,0.20)",
+            zIndex: 9999,
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            border: "1px solid #e5eaf1",
+          }}
+        >
+          <div
+            style={{
+              background: "#102b52",
+              color: "#ffffff",
+              padding: "18px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <strong style={{ fontSize: "16px" }}>Hunters AI Assistant</strong>
+              <div style={{ fontSize: "12px", opacity: 0.8, marginTop: "4px" }}>
+                Your business support assistant
+              </div>
+            </div>
+
+            <button
+              onClick={() => setAiOpen(false)}
+              aria-label="Close chat"
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "#ffffff",
+                cursor: "pointer",
+              }}
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          <div
+            style={{
+              flex: 1,
+              padding: "16px",
+              overflowY: "auto",
+              background: "#f7f9fc",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+            }}
+          >
+            {aiMessages.map((message, index) => (
+              <div
+                key={index}
+                style={{
+                  alignSelf:
+                    message.role === "user" ? "flex-end" : "flex-start",
+                  maxWidth: "85%",
+                  padding: "11px 14px",
+                  borderRadius: "13px",
+                  background:
+                    message.role === "user" ? "#102b52" : "#ffffff",
+                  color: message.role === "user" ? "#ffffff" : "#26364a",
+                  fontSize: "13px",
+                  lineHeight: 1.6,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                }}
+              >
+                {message.content}
+              </div>
+            ))}
+
+            {aiMessages.length === 1 && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                {[
+                  "What services do you offer?",
+                  "Tell me about import and export.",
+                  "I need logistics and shipping support.",
+                  "How can I get a quotation?",
+                ].map((question) => (
+                  <button
+                    key={question}
+                    onClick={() => setAiMessage(question)}
+                    style={{
+                      background: "#ffffff",
+                      border: "1px solid #d8e1ed",
+                      borderRadius: "20px",
+                      padding: "9px 12px",
+                      color: "#102b52",
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {aiLoading && (
+              <div style={{ color: "#64748b", fontSize: "12px" }}>
+                Assistant is typing...
+              </div>
+            )}
+          </div>
+
+          <form
+
+            onSubmit={async (e) => {
+              e.preventDefault();
+
+              const message = aiMessage.trim();
+              if (!message || aiLoading) return;
+
+              const updatedMessages = [
+                ...aiMessages,
+                { role: "user", content: message },
+              ];
+
+              setAiMessages(updatedMessages);
+              setAiMessage("");
+              setAiLoading(true);
+
+              try {
+                const response = await fetch("/api/chat", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    messages: updatedMessages,
+                  }),
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                  throw new Error(data.error || "AI request failed");
+                }
+
+                setAiMessages((previous) => [
+                  ...previous,
+                  {
+                    role: "assistant",
+                    content: data.reply,
+                  },
+                ]);
+              } catch (error) {
+                setAiMessages((previous) => [
+                  ...previous,
+                  {
+                    role: "assistant",
+                    content:
+                      "Sorry, I couldn't connect right now. Please try again.",
+                  },
+                ]);
+                console.error(error);
+              } finally {
+                setAiLoading(false);
+              }
+            }}
+            style={{
+              display: "flex",
+              gap: "8px",
+              padding: "12px",
+              background: "#ffffff",
+              borderTop: "1px solid #e8edf3",
+            }}
+          >
+            <input
+              value={aiMessage}
+              onChange={(e) => setAiMessage(e.target.value)}
+              placeholder="Ask us anything..."
+              style={{
+                flex: 1,
+                minWidth: 0,
+                border: "1px solid #dce3ec",
+                borderRadius: "10px",
+                padding: "12px",
+                outline: "none",
+                fontSize: "13px",
+                color: "#172b46",
+              }}
+            />
+
+            <button
+              type="submit"
+              aria-label="Send message"
+              style={{
+                width: "44px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#102b52",
+                color: "#ffffff",
+                cursor: "pointer",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <ArrowUpRight size={20} />
+            </button>
+          </form>
+        </div>
+      )}
+
+      <button
+        onClick={() => setAiOpen(!aiOpen)}
+        aria-label="Open Hunters AI Assistant"
+        style={{
+          position: "fixed",
+          right: "24px",
+          bottom: "24px",
+          width: "60px",
+          height: "60px",
+          borderRadius: "50%",
+          border: "none",
+          background: "#102b52",
+          color: "#ffffff",
+          boxShadow: "0 8px 25px rgba(16,43,82,0.3)",
+          cursor: "pointer",
+          zIndex: 10000,
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        {aiOpen ? <X size={26} /> : <MessageCircle size={27} />}
+      </button>
 
       <a
         href="https://wa.me/923238874539?text=Assalam-o-Alaikum%2C%20I%20want%20to%20know%20more%20about%20Hunters%20Group%20services."

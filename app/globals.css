@@ -8563,3 +8563,250 @@ button.bg-blue-700 * {
     font-size: 10px;
   }
 }
+
+/* =========================================
+   HUNTERS GROUP — PREMIUM MOTION UPGRADE
+========================================= */
+
+@keyframes hgFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hgFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes hgShine {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* Hero entrance */
+.hero-premium-image {
+  animation: hgFadeIn 1.2s ease both;
+  transition: transform 1.2s ease;
+}
+
+.hero-premium-copy .eyebrow {
+  animation: hgFadeUp 0.7s ease 0.1s both;
+}
+
+.hero-premium h1 {
+  animation: hgFadeUp 0.8s ease 0.25s both;
+}
+
+.hero-premium .hero-description {
+  animation: hgFadeUp 0.8s ease 0.4s both;
+}
+
+.hero-premium .hero-actions {
+  animation: hgFadeUp 0.8s ease 0.55s both;
+}
+
+.hero-premium-points {
+  animation: hgFadeUp 0.8s ease 0.7s both;
+}
+
+.hero-premium-caption {
+  animation: hgFadeIn 1s ease 1s both;
+}
+
+/* Partnership card */
+.trade-partnership-card {
+  animation: hgFadeUp 0.9s ease 0.65s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trade-partnership-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 55px rgba(8, 25, 55, 0.23);
+}
+
+/* Service cards */
+.service-redesign-card {
+  overflow: hidden;
+  border: 1px solid #e5ebf3;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(16, 39, 70, 0.045);
+  transition: transform 0.35s ease, box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.service-redesign-card:hover {
+  transform: translateY(-9px);
+  border-color: #bfd5ff;
+  box-shadow: 0 22px 45px rgba(16, 55, 110, 0.13);
+}
+
+.service-redesign-image {
+  overflow: hidden;
+}
+
+.service-redesign-image img {
+  transition: transform 0.65s cubic-bezier(.2,.7,.2,1);
+}
+
+.service-redesign-card:hover .service-redesign-image img {
+  transform: scale(1.07);
+}
+
+.service-redesign-icon {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.service-redesign-card:hover .service-redesign-icon {
+  transform: translateY(-4px) rotate(-4deg);
+  background: #e5efff;
+}
+
+/* Registrations */
+.registration-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.registration-card:hover {
+  transform: translateY(-6px);
+  border-color: #b9d2ff;
+  box-shadow: 0 15px 32px rgba(16, 55, 110, 0.1);
+}
+
+/* Why us */
+.advantage {
+  padding: 19px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  transition: background 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.advantage:hover {
+  transform: translateY(-5px);
+  background: #f7faff;
+  border-color: #e1eaff;
+}
+
+/* Process */
+.process-step {
+  padding: 18px;
+  border: 1px solid #e5ebf3;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.75);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(16, 39, 70, 0.08);
+}
+
+.step-number {
+  box-shadow: 0 6px 17px rgba(21, 94, 239, 0.22);
+}
+
+/* Buttons */
+.button,
+.service-redesign-link,
+.services-view-all {
+  transition: all 0.28s ease;
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 13px 28px rgba(21, 94, 239, 0.28);
+}
+
+/* Section headings */
+.services-redesign-heading,
+.section-heading,
+.why-intro {
+  position: relative;
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* HUNTERS GROUP — SCROLL REVEAL ANIMATIONS */
+
+@keyframes hgReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hg-reveal {
+  animation: hgReveal 0.8s cubic-bezier(.2,.7,.2,1) both;
+}
+
+/* Smooth hover interactions */
+.service-redesign-card,
+.registration-card,
+.advantage,
+.process-step {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.service-redesign-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 42px rgba(16, 39, 70, 0.13);
+}
+
+.registration-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(16, 39, 70, 0.10);
+}
+
+.advantage:hover {
+  transform: translateY(-5px);
+  background: #f7faff;
+}
+
+.process-step:hover {
+  transform: translateY(-6px);
+}
+
+/* Image interaction */
+.service-redesign-image img {
+  transition: transform 0.7s cubic-bezier(.2,.7,.2,1);
+}
+
+.service-redesign-card:hover .service-redesign-image img {
+  transform: scale(1.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hg-reveal {
+    animation: none !important;
+  }
+}

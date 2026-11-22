@@ -219,7 +219,7 @@ export default function LogisticsServicesPage() {
                         <div className="absolute -inset-4 rounded-3xl bg-blue-200/40 blur-2xl" />
                         <div className="relative overflow-hidden rounded-3xl border border-white bg-white p-3 shadow-2xl shadow-blue-950/10">
                             <img
-                                src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1200&q=85"
+                                src="/services/logistics.png"
                                 alt="Cargo containers at a shipping and logistics facility"
                                 className="h-[300px] w-full rounded-2xl object-cover sm:h-[390px]"
                             />

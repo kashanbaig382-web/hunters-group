@@ -163,7 +163,7 @@ export default function ShopifyPage() {
 
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-xl shadow-blue-950/5">
             <img
-              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85"
+              src="/services/ecommerce.png"
               alt="Online store and e-commerce operations"
               className="h-72 w-full rounded-xl object-cover md:h-[430px]"
             />

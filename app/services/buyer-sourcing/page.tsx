@@ -220,7 +220,7 @@ export default function BuyerSourcingPage() {
                         <div className="absolute -inset-4 rounded-3xl bg-blue-200/40 blur-2xl" />
                         <div className="relative overflow-hidden rounded-3xl border border-white bg-white p-3 shadow-2xl shadow-blue-950/10">
                             <img
-                                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85"
+                                src="/services/buyer-support.jpg"
                                 alt="Organised products and goods in a logistics facility"
                                 className="h-[300px] w-full rounded-2xl object-cover sm:h-[390px]"
                             />
