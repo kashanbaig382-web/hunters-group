@@ -640,7 +640,7 @@ export default function Home() {
           style={{
             position: "fixed",
             right: "24px",
-            bottom: "95px",
+            bottom: "170px",
             width: "min(370px, calc(100vw - 32px))",
             height: "480px",
             maxHeight: "calc(100vh - 130px)",
@@ -857,7 +857,7 @@ export default function Home() {
         style={{
           position: "fixed",
           right: "24px",
-          bottom: "24px",
+          bottom: "90px",
           width: "60px",
           height: "60px",
           borderRadius: "50%",
