@@ -652,12 +652,12 @@ export default function Home() {
             position: "fixed",
             right: "24px",
             bottom: "170px",
-            width: "min(370px, calc(100vw - 32px))",
-            height: "480px",
-            maxHeight: "calc(100vh - 130px)",
+            width: "min(390px, calc(100vw - 32px))",
+            height: "540px",
+            maxHeight: "calc(100vh - 190px)",
             background: "#ffffff",
-            borderRadius: "18px",
-            boxShadow: "0 15px 50px rgba(0,0,0,0.20)",
+            borderRadius: "20px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.22)",
             zIndex: 9999,
             display: "flex",
             flexDirection: "column",
@@ -665,20 +665,60 @@ export default function Home() {
             border: "1px solid #e5eaf1",
           }}
         >
+          {/* HEADER */}
           <div
             style={{
-              background: "#102b52",
+              background: "linear-gradient(135deg, #102b52, #183e70)",
               color: "#ffffff",
-              padding: "18px",
+              padding: "17px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
             }}
           >
-            <div>
-              <strong style={{ fontSize: "16px" }}>Hunters AI Assistant</strong>
-              <div style={{ fontSize: "12px", opacity: 0.8, marginTop: "4px" }}>
-                Your business support assistant
+            <div style={{ display: "flex", alignItems: "center", gap: "11px" }}>
+              <div
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  borderRadius: "50%",
+                  background: "#ffffff",
+                  display: "grid",
+                  placeItems: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src="/hunters-logo.png"
+                  alt="Hunters Group"
+                  style={{ width: "34px", height: "34px", objectFit: "contain" }}
+                />
+              </div>
+
+              <div>
+                <strong style={{ fontSize: "15px" }}>
+                  Hunters AI Assistant
+                </strong>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    opacity: 0.85,
+                    marginTop: "4px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "7px",
+                      height: "7px",
+                      borderRadius: "50%",
+                      background: "#4ade80",
+                    }}
+                  />
+                  Here to help your business
+                </div>
               </div>
             </div>
 
@@ -686,22 +726,28 @@ export default function Home() {
               onClick={() => setAiOpen(false)}
               aria-label="Close chat"
               style={{
-                background: "transparent",
+                background: "rgba(255,255,255,0.12)",
                 border: "none",
                 color: "#ffffff",
                 cursor: "pointer",
+                width: "34px",
+                height: "34px",
+                borderRadius: "9px",
+                display: "grid",
+                placeItems: "center",
               }}
             >
-              <X size={22} />
+              <X size={20} />
             </button>
           </div>
 
+          {/* CHAT MESSAGES */}
           <div
             style={{
               flex: 1,
               padding: "16px",
               overflowY: "auto",
-              background: "#f7f9fc",
+              background: "#f5f7fb",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
@@ -713,21 +759,27 @@ export default function Home() {
                 style={{
                   alignSelf:
                     message.role === "user" ? "flex-end" : "flex-start",
-                  maxWidth: "85%",
+                  maxWidth: "88%",
                   padding: "11px 14px",
-                  borderRadius: "13px",
+                  borderRadius:
+                    message.role === "user"
+                      ? "14px 14px 3px 14px"
+                      : "14px 14px 14px 3px",
                   background:
                     message.role === "user" ? "#102b52" : "#ffffff",
                   color: message.role === "user" ? "#ffffff" : "#26364a",
                   fontSize: "13px",
-                  lineHeight: 1.6,
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                  lineHeight: 1.65,
+                  boxShadow: "0 3px 10px rgba(0,0,0,0.045)",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "anywhere",
                 }}
               >
                 {message.content}
               </div>
             ))}
 
+            {/* QUICK QUESTIONS */}
             {aiMessages.length === 1 && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                 {[
@@ -735,10 +787,18 @@ export default function Home() {
                   "Tell me about import and export.",
                   "I need logistics and shipping support.",
                   "How can I get a quotation?",
+                  "Request a quotation",
                 ].map((question) => (
                   <button
                     key={question}
-                    onClick={() => setAiMessage(question)}
+                    type="button"
+                    onClick={() => {
+                      if (question === "Request a quotation") {
+                        setLeadFormOpen(true);
+                      } else {
+                        setAiMessage(question);
+                      }
+                    }}
                     style={{
                       background: "#ffffff",
                       border: "1px solid #d8e1ed",
@@ -756,20 +816,206 @@ export default function Home() {
               </div>
             )}
 
+            {/* QUOTATION FORM */}
+            {leadFormOpen && (
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (leadSaving) return;
+
+                  setLeadSaving(true);
+
+                  try {
+                    const response = await fetch("/api/leads", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(leadData),
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                      throw new Error(data.error || "Submission failed.");
+                    }
+
+                    setAiMessages((previous) => [
+                      ...previous,
+                      {
+                        role: "assistant",
+                        content:
+                          "Thank you! Your quotation request has been submitted successfully. Our team will contact you soon.",
+                      },
+                    ]);
+
+                    setLeadData({
+                      name: "",
+                      email: "",
+                      whatsapp: "",
+                      service: "",
+                      requirements: "",
+                    });
+
+                    setLeadFormOpen(false);
+                    setLeadConfirmed(true);
+                  } catch (error) {
+                    setAiMessages((previous) => [
+                      ...previous,
+                      {
+                        role: "assistant",
+                        content:
+                          error instanceof Error
+                            ? error.message
+                            : "Something went wrong. Please try again.",
+                      },
+                    ]);
+                  } finally {
+                    setLeadSaving(false);
+                  }
+                }}
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #dce5ef",
+                  borderRadius: "14px",
+                  padding: "14px",
+                  display: "grid",
+                  gap: "10px",
+                }}
+              >
+                <div>
+                  <strong style={{ color: "#102b52", fontSize: "14px" }}>
+                    Request a Quotation
+                  </strong>
+                  <p
+                    style={{
+                      color: "#64748b",
+                      fontSize: "11px",
+                      margin: "4px 0 0",
+                    }}
+                  >
+                    Share your details and our team will get in touch.
+                  </p>
+                </div>
+
+                {[
+                  { key: "name", placeholder: "Full name", required: true },
+                  { key: "email", placeholder: "Email address", required: true },
+                  {
+                    key: "whatsapp",
+                    placeholder: "WhatsApp number (optional)",
+                    required: false,
+                  },
+                  {
+                    key: "service",
+                    placeholder: "Service required",
+                    required: true,
+                  },
+                ].map((field) => (
+                  <input
+                    key={field.key}
+                    required={field.required}
+                    type={field.key === "email" ? "email" : "text"}
+                    placeholder={field.placeholder}
+                    value={leadData[field.key as keyof typeof leadData]}
+                    onChange={(e) =>
+                      setLeadData((previous) => ({
+                        ...previous,
+                        [field.key]: e.target.value,
+                      }))
+                    }
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      padding: "11px 12px",
+                      border: "1px solid #dce3ec",
+                      borderRadius: "9px",
+                      fontSize: "12px",
+                      color: "#172b46",
+                      outlineColor: "#102b52",
+                    }}
+                  />
+                ))}
+
+                <textarea
+                  required
+                  placeholder="Describe your business requirements"
+                  value={leadData.requirements}
+                  onChange={(e) =>
+                    setLeadData((previous) => ({
+                      ...previous,
+                      requirements: e.target.value,
+                    }))
+                  }
+                  rows={3}
+                  style={{
+                    width: "100%",
+                    boxSizing: "border-box",
+                    padding: "11px 12px",
+                    border: "1px solid #dce3ec",
+                    borderRadius: "9px",
+                    fontSize: "12px",
+                    resize: "vertical",
+                    color: "#172b46",
+                  }}
+                />
+
+                <button
+                  type="submit"
+                  disabled={leadSaving}
+                  style={{
+                    background: "#102b52",
+                    color: "#ffffff",
+                    border: "none",
+                    borderRadius: "9px",
+                    padding: "12px",
+                    cursor: leadSaving ? "wait" : "pointer",
+                    fontWeight: 600,
+                    opacity: leadSaving ? 0.7 : 1,
+                  }}
+                >
+                  {leadSaving ? "Submitting..." : "Submit Quotation Request"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setLeadFormOpen(false)}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "#64748b",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                  }}
+                >
+                  Cancel
+                </button>
+              </form>
+            )}
+
             {aiLoading && (
-              <div style={{ color: "#64748b", fontSize: "12px" }}>
+              <div
+                style={{
+                  alignSelf: "flex-start",
+                  background: "#ffffff",
+                  color: "#64748b",
+                  padding: "11px 14px",
+                  borderRadius: "14px",
+                  fontSize: "12px",
+                }}
+              >
                 Assistant is typing...
               </div>
             )}
           </div>
 
+          {/* MESSAGE INPUT */}
           <form
-
             onSubmit={async (e) => {
               e.preventDefault();
 
               const message = aiMessage.trim();
-              if (!message || aiLoading) return;
+              if (!message || aiLoading || leadSaving) return;
 
               const updatedMessages = [
                 ...aiMessages,
@@ -830,6 +1076,7 @@ export default function Home() {
               value={aiMessage}
               onChange={(e) => setAiMessage(e.target.value)}
               placeholder="Ask us anything..."
+              disabled={aiLoading}
               style={{
                 flex: 1,
                 minWidth: 0,
@@ -844,9 +1091,11 @@ export default function Home() {
 
             <button
               type="submit"
+              disabled={aiLoading || !aiMessage.trim()}
               aria-label="Send message"
               style={{
                 width: "44px",
+                flexShrink: 0,
                 border: "none",
                 borderRadius: "10px",
                 background: "#102b52",
@@ -854,6 +1103,7 @@ export default function Home() {
                 cursor: "pointer",
                 display: "grid",
                 placeItems: "center",
+                opacity: aiLoading || !aiMessage.trim() ? 0.6 : 1,
               }}
             >
               <ArrowUpRight size={20} />
@@ -862,6 +1112,7 @@ export default function Home() {
         </div>
       )}
 
+      {/* CHAT TOGGLE BUTTON */}
       <button
         onClick={() => setAiOpen(!aiOpen)}
         aria-label="Open Hunters AI Assistant"
