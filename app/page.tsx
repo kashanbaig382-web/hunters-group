@@ -154,6 +154,17 @@ export default function Home() {
     setServiceOpen(false);
 
   };
+  const [leadFormOpen, setLeadFormOpen] = useState(false);
+  const [leadConfirmed, setLeadConfirmed] = useState(false);
+  const [leadSaving, setLeadSaving] = useState(false);
+
+  const [leadData, setLeadData] = useState({
+    name: "",
+    email: "",
+    whatsapp: "",
+    service: "",
+    requirements: "",
+  });
 
   return (
     <main>
