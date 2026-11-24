@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const { name, email, whatsapp, service, requirements } =
       await request.json();
 
-    if (!name || !email || !service || !requirements) {
+    if (!name?.trim() || !email?.trim() || !service?.trim() || !requirements?.trim()) {
       return NextResponse.json(
         { success: false, error: "Please complete all required fields." },
         { status: 400 }
@@ -17,10 +17,7 @@ export async function POST(request: Request) {
     const token = process.env.GOOGLE_SHEETS_TOKEN;
 
     if (!webhookUrl || !token) {
-      return NextResponse.json(
-        { success: false, error: "Google Sheets configuration is missing." },
-        { status: 500 }
-      );
+      throw new Error("Google Sheets environment variables are missing.");
     }
 
     const response = await fetch(webhookUrl, {
@@ -30,27 +27,48 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         token,
-        name,
-        email,
-        whatsapp: whatsapp || "",
-        service,
-        requirements,
+        name: name.trim(),
+        email: email.trim(),
+        whatsapp: whatsapp?.trim() || "",
+        service: service.trim(),
+        requirements: requirements.trim(),
       }),
       cache: "no-store",
     });
 
-    const result = await response.json();
+    const responseText = await response.text();
 
-    if (!response.ok || !result.success) {
-      throw new Error(result.error || "Could not save lead.");
+    let result;
+
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      console.error("Google Apps Script response:", responseText);
+
+      throw new Error(
+        "Google Apps Script returned an invalid response. Check deployment access and URL."
+      );
     }
 
-    return NextResponse.json({ success: true });
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || "Google Sheets rejected the lead.");
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Lead saved successfully.",
+    });
   } catch (error) {
     console.error("Lead saving error:", error);
 
     return NextResponse.json(
-      { success: false, error: "Lead could not be saved. Please try again." },
+      {
+        success: false,
+        error:
+          error instanceof Error
+            ? error.message
+            : "Lead could not be saved.",
+      },
       { status: 500 }
     );
   }
