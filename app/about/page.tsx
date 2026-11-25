@@ -52,13 +52,6 @@ const leaders = [
 
 const teamMembers = [
   {
-    name: "Zunaira Atta ur Rehman",
-    role: "Managing Director",
-    image: "/team-zunaira.jpg",
-    description:
-      "Oversees business coordination and daily operations, supporting effective management and organizational growth.",
-  },
-  {
     name: "Zhang Yun (张云)",
     role: "Head of Import & Export",
     image: "/team-zhang-yun.jpg",
